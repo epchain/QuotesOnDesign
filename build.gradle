@@ -1,0 +1,63 @@
+buildscript {
+  repositories {
+    google()
+    jcenter()
+    maven { url "http://objectbox.net/beta-repo/" }
+  }
+
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.0.0-beta7'
+    classpath 'io.objectbox:objectbox-gradle-plugin:1.0.1'
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+    mavenCentral()
+    maven { url "http://objectbox.net/beta-repo/" }
+  }
+}
+
+task clean( type: Delete ) {
+  delete rootProject.buildDir
+}
+
+ext {
+  jdkVersion = JavaVersion.VERSION_1_8
+
+  androidMinSdkVersion = 16
+  androidTargetSdkVersion = 26
+  androidCompileSdkVersion = 26
+  androidBuildToolsVersion = '26.0.2'
+
+  supportLibraryVersion = '26.0.1'
+  retrofit2Version = '2.3.0'
+  leakCanaryVersion = '1.5.4'
+  junit5PlatformVersion = '1.0.0-M3'
+  junit5JupiterVersion = '5.0.0-M3'
+
+  androidTestInstrumentationRunner = 'android.support.test.runner.AndroidJUnitRunner'
+
+  deps = [
+    // Android
+    support:                "com.android.support:support-v4:$supportLibraryVersion",
+    design:                 "com.android.support:design:$supportLibraryVersion",
+    appCompat:              "com.android.support:appcompat-v7:$supportLibraryVersion",
+    supportVectorDrawable:  "com.android.support:support-vector-drawable:$supportLibraryVersion",
+    recyclerview:           "com.android.support:recyclerview-v7:$supportLibraryVersion",
+    cardview:               "com.android.support:cardview-v7:$supportLibraryVersion",
+    testRunner:             'com.android.support.test:runner:1.0.0',
+    espresso:               'com.android.support.test.espresso:espresso-core:3.0.0',
+    // Libs
+    retrofit2:              "com.squareup.retrofit2:retrofit:$retrofit2Version",
+    retrofit2ConverterGson: "com.squareup.retrofit2:converter-gson:$retrofit2Version",
+    // Tests
+    jUnit4:                 'junit:junit:4.12',
+    jUnit5PlatformLauncher: "org.junit.platform:junit-platform-launcher:$junit5PlatformVersion",
+    jUnit5JupiterApi:       "org.junit.jupiter:junit-jupiter-api:$junit5JupiterVersion",
+    jUnit5JupiterEngine:    "org.junit.jupiter:junit-jupiter-engine:$junit5JupiterVersion",
+    openTest4j:             "org.opentest4j:opentest4j:1.0.0-M1"
+  ]
+}

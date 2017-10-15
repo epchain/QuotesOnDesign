@@ -1,0 +1,131 @@
+apply plugin: 'com.android.application'
+apply plugin: 'io.objectbox'
+
+android {
+  compileSdkVersion androidCompileSdkVersion
+  buildToolsVersion androidBuildToolsVersion
+
+  defaultConfig {
+    applicationId "com.dr0id3v.quotesondesign"
+    versionCode 125
+    versionName "1.0.1"
+
+    minSdkVersion androidMinSdkVersion
+    targetSdkVersion androidTargetSdkVersion
+
+    compileOptions {
+      sourceCompatibility jdkVersion
+      targetCompatibility jdkVersion
+    }
+
+    vectorDrawables {
+      useSupportLibrary = true
+    }
+
+    testInstrumentationRunner androidTestInstrumentationRunner
+  }
+
+  signingConfigs {
+    release
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled true
+      shrinkResources true
+      proguardFiles getDefaultProguardFile( 'proguard-android.txt' ), 'proguard-rules.pro'
+      signingConfig signingConfigs.release
+    }
+  }
+
+  afterEvaluate {
+    applicationVariants.all { variant ->
+      variant.outputs.each { output ->
+        tasks.findByName( "assemble${variant.name.capitalize()}" ).doLast {
+          def apkDir = rootDir.absolutePath + '/apk'
+          def apkName = "$rootProject.name-$variant.versionName-${output.name}.apk"
+          copy {
+            from output.outputFile
+            into apkDir
+            rename { filename ->
+              filename.replace( output.outputFile.name, apkName )
+            }
+          }
+          if ( variant.buildType.name == 'release' ) {
+            copy {
+              from variant.mappingFile.parent
+              into "$apkDir/$rootProject.name-$variant.versionName-${output.name}-mapping"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+dependencies {
+  // Android
+  implementation deps.design
+  implementation deps.support
+  implementation deps.appCompat
+  implementation deps.supportVectorDrawable
+  implementation deps.recyclerview
+  implementation deps.cardview
+  // Libs
+  implementation deps.retrofit2
+  implementation deps.retrofit2ConverterGson
+  // Tests
+  testImplementation deps.jUnit4 // must be included even if JUnit5 used
+  testImplementation deps.jUnit5PlatformLauncher
+  testImplementation deps.jUnit5JupiterApi
+  testImplementation deps.jUnit5JupiterEngine
+  testImplementation deps.openTest4j
+  androidTestImplementation deps.testRunner
+  androidTestImplementation deps.espresso
+}
+
+build {
+  checkSigningProperties()
+}
+
+def checkSigningProperties()
+{
+  def warning = 'WARNING: '
+  def signingFileName = 'signing.properties'
+
+  def storeFileKey = 'STORE_FILE'
+  def storePasswordKey = 'STORE_PASSWORD'
+  def keyAliasKey = 'KEY_ALIAS'
+  def keyPasswordKey = 'KEY_PASSWORD'
+
+  try {
+    def signingProperties = new Properties()
+    signingProperties.load( new FileInputStream( signingFileName ) )
+
+    boolean ok = true
+    ok &= signingProperties.containsKey( storeFileKey )
+    ok &= signingProperties.containsKey( storePasswordKey )
+    ok &= signingProperties.containsKey( keyAliasKey )
+    ok &= signingProperties.containsKey( keyPasswordKey )
+
+    if ( ok ) {
+      android {
+        signingConfigs {
+          release {
+            storeFile = file( signingProperties[ storeFileKey ] )
+            storePassword = signingProperties[ storePasswordKey ]
+            keyAlias = signingProperties[ keyAliasKey ]
+            keyPassword = signingProperties[ keyPasswordKey ]
+          }
+        }
+      }
+    } else {
+      println warning + signingFileName + " found, but missing some properties"
+      android.buildTypes.release.signingConfig = null
+    }
+  }
+  catch ( ignored ) {
+    println warning + 'Cannot read ' + signingFileName
+    android.buildTypes.release.signingConfig = null
+  }
+}

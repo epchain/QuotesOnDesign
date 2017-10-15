@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:drawable="@android:color/white"/>
+
+  <item>
+    <bitmap
+      android:src="@drawable/quote"
+      android:gravity="center"
+      android:antialias="true"
+      android:filter="true"
+      />
+  </item>
+
+  <item android:bottom="100dp">
+    <bitmap
+      android:src="@drawable/title"
+      android:gravity="bottom|center_horizontal"
+      android:antialias="true"
+      android:filter="true"
+      />
+  </item>
+
+</layer-list>

@@ -1,0 +1,34 @@
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <ListPreference
+    android:key="@string/prefUpdatePeriodKey"
+    android:entries="@array/prefUpdatePeriodTitles"
+    android:entryValues="@array/prefUpdatePeriodValues"
+    android:defaultValue="@string/prefUpdatePeriodDefault"
+    android:title="@string/prefUpdatePeriod"
+    android:negativeButtonText="@null"
+    android:positiveButtonText="@null"/>
+
+  <ListPreference
+    android:key="@string/prefUpdateMethodKey"
+    android:entries="@array/prefUpdateMethodTitles"
+    android:entryValues="@array/prefUpdateMethodValues"
+    android:defaultValue="@string/prefUpdateMethodDefault"
+    android:title="@string/prefUpdateMethod"
+    android:negativeButtonText="@null"
+    android:positiveButtonText="@null"/>
+
+  <SwitchPreference
+    android:key="@string/prefNewQuoteNotificationsKey"
+    android:defaultValue="@bool/prefNewQuoteNotificationsDefault"
+    android:title="@string/prefNewQuoteNotifications"
+    android:summary="@string/prefNewQuoteNotificationsSummary"/>
+
+  <SwitchPreference
+    android:key="@string/prefDayNightKey"
+    android:defaultValue="@bool/prefDayNightDefault"
+    android:title="@string/prefDayNight"
+    android:summary="@string/prefDayNightSummary"/>
+
+</PreferenceScreen>

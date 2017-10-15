@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <!-- Preferences -->
+  <string name="prefUpdatePeriodKey">prefUpdatePeriod</string>
+  <string-array name="prefUpdatePeriodValues">
+    <item>3600</item>
+    <item>7200</item>
+    <item>14400</item>
+    <item>28800</item>
+    <item>-1</item>
+  </string-array>
+  <string name="prefUpdatePeriodDefault">7200</string>
+  <string name="prefUpdateMethodKey">prefUpdateMethod</string>
+  <string-array name="prefUpdateMethodValues">
+    <item>0</item>
+    <item>1</item>
+  </string-array>
+  <string name="prefUpdateMethodDefault">1</string>
+  <string name="prefNewQuoteNotificationsKey">prefNewQuoteNotifications</string>
+  <bool name="prefNewQuoteNotificationsDefault">true</bool>
+  <string name="prefDayNightKey">prefDayNight</string>
+  <bool name="prefDayNightDefault">false</bool>
+  <!-- Other -->
+  <string name="notificationsChannelId">quotesChannel</string>
+  <integer name="serverCooldownSeconds">5</integer>
+  <integer name="serverTimeoutSeconds">5</integer>
+</resources>

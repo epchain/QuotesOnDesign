@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <color name="colorPrimary">#006978</color>
+  <color name="colorPrimaryDark">#006978</color>
+  <color name="colorAccent">#d50000</color>
+  <color name="materialCyan600">#00acc1</color>
+  <color name="materialGrey400">#bdbdbd</color>
+  <color name="materialGrey600">#757575</color>
+  <color name="icLauncherBackground">#FFFFFF</color>
+</resources>

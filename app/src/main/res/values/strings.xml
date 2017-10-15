@@ -1,0 +1,32 @@
+<resources>
+  <string name="appName">Quotes on design</string>
+  <string name="remove">Remove</string>
+  <string name="noNewQuoteAvailable">No new quote available</string>
+  <string name="noInternetConnection">No Internet connection</string>
+  <string name="favorite">Favorite</string>
+  <string name="addedToFavorites">Added to favorite quotes</string>
+  <!-- Notifications -->
+  <string name="notificationsChannelName">New quote</string>
+  <string name="notificationsChannelDescription">New quote from quotesondesign.com</string>
+  <!-- Preferences -->
+  <string name="settings">Settings</string>
+  <string name="prefUpdatePeriod">Update period</string>
+  <string-array name="prefUpdatePeriodTitles">
+    <item>1 hour</item>
+    <item>2 hours</item>
+    <item>3 hours</item>
+    <item>8 hours</item>
+    <item>Never</item>
+  </string-array>
+  <string name="prefUpdateMethod">Update method</string>
+  <string-array name="prefUpdateMethodTitles">
+    <item>Latest</item>
+    <item>Random</item>
+  </string-array>
+  <string name="prefNewQuoteNotifications">Enable new quote notifications</string>
+  <string name="prefNewQuoteNotificationsSummary">Notification when new quote available</string>
+  <string name="prefDayNight">Enable night theme</string>
+  <string name="prefDayNightSummary">Switches app to night theme</string>
+  <!-- Non-translatable -->
+  <string name="quoteAuthor">— %1$s</string>
+</resources>

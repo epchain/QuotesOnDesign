@@ -1,0 +1,11 @@
+<resources>
+  <dimen name="material_activity_horizontal_padding">16dp</dimen>
+  <dimen name="material_activity_vertical_padding">16dp</dimen>
+  <dimen name="material_appbar_padding_top">8dp</dimen>
+  <dimen name="material_fab_margin_mobile">16dp</dimen>
+  <dimen name="material_list_margin_top">8dp</dimen>
+  <dimen name="material_list_margin_horizontal">16dp</dimen>
+  <dimen name="material_card_action_margin">8dp</dimen>
+  <dimen name="quote_card_padding">8dp</dimen>
+  <dimen name="quote_text_size">22sp</dimen>
+</resources>
